@@ -1,0 +1,30 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: karpenter-provisioner
+  namespace: karpenter
+spec:
+  limits:
+    resources:
+      cpu: 100
+      memory: 100Gi
+  provider:
+    subnetSelector:
+      karpenter.sh/discovery: <subnet tag>
+    securityGroupSelector:
+      Name: <security group name>
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["on-demand"]
+    - key: topology.kubernetes.io/zone
+      operator: In
+      values: ["eu-central-1a", "eu-central-1b"]
+    - key: node.kubernetes.io/instance-type
+      operator: In
+      values: [ "t3a.large", "t3a.medium" ]
+  ttlSecondsAfterEmpty: 30
+  ttlSecondsUntilExpired: 2592000
+  labels:
+    provisioner: karpenter
+
