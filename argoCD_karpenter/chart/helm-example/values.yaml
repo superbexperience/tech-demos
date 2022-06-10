@@ -7,7 +7,7 @@ replicaCount: 20
 image:
   pullPolicy: IfNotPresent
   repository: taptap21/helmtest
-  tag: 0.12
+  tag: 0.11
 
 
 imagePullSecrets: []
