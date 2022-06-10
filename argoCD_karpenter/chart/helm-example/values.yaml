@@ -2,12 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 5
+replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
   repository: taptap21/helmtest
-  tag: 0.12
+  tag: 0.11
 
 
 imagePullSecrets: []
